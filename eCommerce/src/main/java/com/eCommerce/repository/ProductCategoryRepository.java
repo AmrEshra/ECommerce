@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.eCommerce.entity.ProductCategory;
 
-@CrossOrigin
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long>{
 	
 }
