@@ -8,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.eCommerce.entity.Product;
@@ -69,6 +71,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public long countAll() {
 		return productRepository.count();
+	}
+
+	@Override
+	public Page<Product> findByCategoryId(Long categoryId, Pageable pageable) {
+		return productRepository.findByCategoryId(categoryId, pageable);
 	}
 
 }

@@ -3,6 +3,9 @@ package com.eCommerce.RESTcontrollers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +44,16 @@ public class ProductRestController {
 		
 		try {
 			return ProductService.findById(id);
+		}catch(NotFoundException e) {
+			throw new NotFoundException("Not Data Found");
+		}
+	}
+	
+	@GetMapping("/Products/category/{categoryId}")
+	public Page<Product> getProductByCategoryId(@PathVariable Long categoryId, @PageableDefault(page = 0, size = 50) Pageable pageable) {
+		
+		try {
+			return ProductService.findByCategoryId(categoryId, pageable);
 		}catch(NotFoundException e) {
 			throw new NotFoundException("Not Data Found");
 		}
