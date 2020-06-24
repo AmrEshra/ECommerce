@@ -19,7 +19,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @NamedQueries({
 	@NamedQuery(name = "product_findByName", 
-			query = "SELECT p FROM Product p WHERE p.name like :P_NAME"),
+			query = "SELECT p FROM Product p WHERE lower(p.name) like lower(:P_NAME)"),
 })
 
 @Table(name="PRODUCT")
