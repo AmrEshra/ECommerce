@@ -21,7 +21,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
 	@Override
 	public List<ProductCategory> findAll() {
-		return ProductCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+		return ProductCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
 
 }
