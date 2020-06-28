@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eCommerce.entity.Product;
@@ -49,8 +50,8 @@ public class ProductRestController {
 		}
 	}
 	
-	@GetMapping("/Products/category/{categoryId}")
-	public Page<Product> getProductByCategoryId(@PathVariable Long categoryId, @PageableDefault(page = 0, size = 50) Pageable pageable) {
+	@GetMapping("/Products/category")
+	public Page<Product> getProductByCategoryId(@RequestParam Long categoryId, @PageableDefault(page = 0, size = 50) Pageable pageable) {
 		
 		try {
 			return ProductService.findByCategoryId(categoryId, pageable);
