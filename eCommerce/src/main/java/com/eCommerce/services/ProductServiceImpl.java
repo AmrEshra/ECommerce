@@ -3,9 +3,7 @@ package com.eCommerce.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,15 +34,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public List<Product> findByName(String name) {
-		
-		EntityManager entityManager = emf.createEntityManager();
-
-		TypedQuery<Product> query = entityManager.createNamedQuery("product_findByName", Product.class);
-        query.setParameter("P_NAME", "%" + name + "%");
-        List<Product> list = query.getResultList();
-        entityManager.close();
-        return list;
+	public Page<Product> findByName(String name, Pageable pageable) {
+		return productRepository.findByName(name == null || name.equals("null") ? "%%" : "%" + name +"%", pageable);
 	}
 	
 	@Override

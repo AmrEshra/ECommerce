@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.eCommerce.entity.Product;
 import com.eCommerce.entity.ProductCategory;
 import com.eCommerce.exceptions.NotFoundException;
 import com.eCommerce.repository.ProductCategoryRepository;

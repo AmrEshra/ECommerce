@@ -60,10 +60,10 @@ public class ProductRestController {
 		}
 	}
 	
-	@GetMapping("/Products/name/{name}")
-	public List<Product> getProductBytName(@PathVariable String name) {
+	@GetMapping("/Products/name")
+	public Page<Product> getProductBytName(@RequestParam String name, @PageableDefault(page = 0, size = 50) Pageable pageable) {
 
-		return ProductService.findByName(name);
+		return ProductService.findByName(name, pageable);
 	}
 	
 	@GetMapping("/countProducts")
