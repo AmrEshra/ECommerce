@@ -46,6 +46,11 @@ public class CartServiceImpl implements CartService {
 	public void removeFromCart(Long productId) {
 		cartRepository.deleteById(productId);
 	}
+	
+	@Override
+	public void removeAllFromCart() {
+		cartRepository.deleteAll();
+	}
 
 	@Override
 	public Cart getCartByProductId(Long productId) {
@@ -56,8 +61,6 @@ public class CartServiceImpl implements CartService {
 			return null;
 		}
 	}
-
-	
 
 	@Override
 	public Cart updateCart(Long productId, Integer newItemCount) {

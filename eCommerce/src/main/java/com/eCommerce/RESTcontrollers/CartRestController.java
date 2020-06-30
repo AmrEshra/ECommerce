@@ -57,4 +57,9 @@ public class CartRestController {
 		}
 	}
 
+	@DeleteMapping("/Carts/deleteAll")
+	public void removeFromCart() {
+		cartService.removeAllFromCart();
+	}
+
 }
