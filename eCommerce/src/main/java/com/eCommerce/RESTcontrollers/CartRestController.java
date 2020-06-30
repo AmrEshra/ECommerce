@@ -22,7 +22,7 @@ import com.eCommerce.services.CartService;
 @RequestMapping("/cart-api")
 @CrossOrigin(origins = "*")
 public class CartRestController {
-	
+
 	CartService cartService;
 
 	@Autowired
@@ -34,26 +34,25 @@ public class CartRestController {
 	public List<CartDetails> getCartDetails() {
 		return cartService.getCartDetails();
 	}
-	
+
 	@PostMapping("/Carts")
 	public Cart addToCart(@RequestBody Cart cart) {
-		
+
 		cartService.addToCart(cart);
 		return cart;
 	}
-	
+
 	@PostMapping("/Carts/updateCart")
 	public Cart updateCart(@RequestParam Long productId, @RequestParam Integer newItemCount) {
 		return cartService.updateCart(productId, newItemCount);
 	}
-	
+
 	@DeleteMapping("/Carts/{id}")
-	public String removeFromCart(@PathVariable Long id) {
-		
+	public void removeFromCart(@PathVariable Long id) {
+
 		try {
 			cartService.removeFromCart(id);
-			return "Item deleted from Cart";
-		}catch(NotFoundException e) {
+		} catch (NotFoundException e) {
 			throw new NotFoundException("Not Data Found");
 		}
 	}
