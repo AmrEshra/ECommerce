@@ -1,18 +1,29 @@
 package com.eCommerce.exceptions;
 
+import java.util.Date;
+
 public class ErrorResponse {
 
+	private Date timeStamp;
 	private int status;
+	private String error;
 	private String message;
-	private long timeStamp;
+	private String path;
 	
-	public ErrorResponse() {
+	public ErrorResponse(int status, String error, String message, String path) {
 		
+		this.timeStamp = new Date(System.currentTimeMillis());
+		this.status = status;
+		this.error = error;
+		this.message = message;
+		this.path = path;
 	}
 
-	public ErrorResponse(int status, String message, long timeStamp) {
-		this.status = status;
-		this.message = message;
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 
@@ -24,6 +35,14 @@ public class ErrorResponse {
 		this.status = status;
 	}
 
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -32,14 +51,13 @@ public class ErrorResponse {
 		this.message = message;
 	}
 
-	public long getTimeStamp() {
-		return timeStamp;
+	public String getPath() {
+		return path;
 	}
 
-	public void setTimeStamp(long timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setPath(String path) {
+		this.path = path;
 	}
-	
 }
 
 
