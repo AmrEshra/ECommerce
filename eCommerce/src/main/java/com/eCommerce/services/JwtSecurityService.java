@@ -1,6 +1,5 @@
 package com.eCommerce.services;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +14,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtSecurityService {
-
-//	String timeStamp = new SimpleDateFormat("yyyy.MM.dd").format(new Date());
 	
     private String SECRET_KEY = "secret";
 
